@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { addUser } from "./utils/userSlice";
+import { addUser } from "../utils/userSlice";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
     const [email, setEmail] = useState("singh@gmail.com");
@@ -9,7 +10,7 @@ const Login = () => {
     const dispatch = useDispatch();
     const onClickHandle = async () => {
         try{
-            const res = await axios.post("http://localhost:3000/login",{
+            const res = await axios.post(BASE_URL+"/login",{
                 email,
                 password
             },{withCredentials:true});
