@@ -1,7 +1,11 @@
 import React from "react";
 
 const Usercard = (props) => {
-  const { firstName, lastName, photoUrl, about, gender, age } = props.user;
+  if (!props.user) {
+    return <div className="text-center text-white my-4">No Users in Feed</div>;
+  }
+
+  const { firstName, lastName, photoUrl, about, gender, age } = props?.user;
   return (
     <div>
       <div className="card bg-base-300 w-96 shadow-xl">

@@ -38,7 +38,7 @@ const Connections = () => {
         return (
           <div
             key={_id}
-            className="card card-compact bg-base-300 shadow-xl m-4 p-4 w-1/2 mx-auto"
+            className="card card-compact bg-base-300 shadow-xl m-4 p-4 w-full md:w-1/2 lg:w-1/3 mx-auto"
           >
             <div className="flex items-center">
               <img
@@ -55,7 +55,7 @@ const Connections = () => {
                   {age && gender && " | "}
                   {gender && <span>Gender: {gender}</span>}
                 </p>
-                <p>{about || ""}</p>
+                <p>{about || "No details provided."}</p>
               </div>
             </div>
           </div>
