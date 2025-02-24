@@ -8,10 +8,8 @@ import { useEffect } from "react";
 import axios from "axios";
 
 function Body() {
-  console.log("hello");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userData = useSelector(store => store.user);
 
   const fetchUser = async () => {
     try{
@@ -30,7 +28,6 @@ function Body() {
   };
 
   useEffect(()=>{
-    console.log("useEffect called");
     fetchUser();
   },[]);
 
