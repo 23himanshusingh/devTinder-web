@@ -5,10 +5,10 @@ const Usercard = (props) => {
     return <div className="text-center text-white my-4">No Users in Feed</div>;
   }
 
-  const { firstName, lastName, photoUrl, about, gender, age } = props?.user;
+  const { firstName, lastName, photoUrl, about, gender, age } = props.user;
   return (
     <div>
-      <div className="card bg-base-300 w-96 shadow-xl">
+      <div className="card bg-base-300 w-96 h-96 shadow-xl">
         <figure>
           <img
             src={photoUrl}
