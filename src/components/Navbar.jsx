@@ -7,18 +7,22 @@ import { useNavigate } from "react-router-dom";
 import { removeUser } from "../utils/userSlice";
 
 const Navbar = () => {
-  const user = useSelector(store => store.user);
+  const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onClickHandler = async () => {
-    try{
-      const res = await axios.post(BASE_URL+'/logout',{},{
-        withCredentials : true
-      });
+    try {
+      const res = await axios.post(
+        BASE_URL + "/logout",
+        {},
+        {
+          withCredentials: true,
+        }
+      );
       dispatch(removeUser());
-      return navigate('/login');
-    }catch(err){
+      return navigate("/login");
+    } catch (err) {
       console.log(err);
     }
   };
@@ -26,11 +30,15 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-300">
         <div className="flex-1 mx-0.5">
-          <Link to="/" className="btn btn-ghost text-xl">🧑‍💻devTinder</Link>
+          <Link to="/" className="btn btn-ghost text-xl">
+            🧑‍💻devTinder
+          </Link>
         </div>
         {user && (
           <div className="flex-none gap-2 flex items-center">
-            <span className="mr-2 text-sm font-medium">Welcome, {user.firstName}</span>
+            <span className="mr-2 text-sm font-medium">
+              Welcome, {user.firstName}
+            </span>
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
@@ -51,11 +59,13 @@ const Navbar = () => {
                 <li>
                   <Link to="/profile" className="justify-between">
                     Profile
-                    <span className="badge">New</span>
                   </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link to="/connections">Connections</Link>
+                </li>
+                <li>
+                  <Link to="/requests">Requests</Link>
                 </li>
                 <li>
                   <a onClick={onClickHandler}>Logout</a>

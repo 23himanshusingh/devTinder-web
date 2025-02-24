@@ -4,6 +4,8 @@ import Body from "./Body.jsx";
 import Login from "./Login.jsx";
 import Profile from "./Profile.jsx";
 import Feed from "./Feed.jsx";
+import Connections from "./Connections.jsx";
+import ConnectionRequests from "./ConnectionRequests.jsx";
 
 const root = document.getElementById("root");
 
@@ -16,6 +18,8 @@ function App() {
             <Route path="/" element={<Feed />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/connections" element={<Connections />}></Route>
+            <Route path="/requests" element={<ConnectionRequests />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
