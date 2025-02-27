@@ -6,6 +6,7 @@ import Profile from "./Profile.jsx";
 import Feed from "./Feed.jsx";
 import Connections from "./Connections.jsx";
 import ConnectionRequests from "./ConnectionRequests.jsx";
+import Chat from "./Chat.jsx";
 
 const root = document.getElementById("root");
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/connections" element={<Connections />}></Route>
             <Route path="/requests" element={<ConnectionRequests />}></Route>
+            <Route path="/chat/:targetUserId" element={<Chat />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

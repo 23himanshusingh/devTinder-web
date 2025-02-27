@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -28,32 +28,33 @@ const Usercard = (props) => {
   };
 
   return (
-    <div>
-      <div className="card bg-base-300 w-96 h-96 shadow-xl">
-        <figure>
-          <img src={photoUrl} alt="Profile-Photo" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">
-            {firstName}
-            {lastName ? " " + lastName : ""}
-          </h2>
-          {gender && age && <p>{gender + " " + age}</p>}
-          <p>{about}</p>
-          <div className="card-actions justify-center">
-            <button
-              className="btn btn-secondary"
-              onClick={() => sendRequest(_id, "interested")}
-            >
-              Interested
-            </button>
-            <button
-              className="btn btn-primary"
-              onClick={() => sendRequest(_id, "ignored")}
-            >
-              Ignore
-            </button>
-          </div>
+    <div className="card bg-base-300 w-96 shadow-xl">
+      <figure className="w-full h-70 overflow-hidden">
+        <img
+          src={photoUrl || "https://via.placeholder.com/300x160"}
+          alt="Profile-Photo"
+          className="w-full h-full object-cover"
+        />
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title">
+          {firstName}{lastName ? " " + lastName : ""}
+        </h2>
+        {gender && age && <p>{gender + " " + age}</p>}
+        <p>{about}</p>
+        <div className="card-actions justify-center">
+          <button
+            className="btn btn-secondary"
+            onClick={() => sendRequest(_id, "interested")}
+          >
+            Interested
+          </button>
+          <button
+            className="btn btn-primary"
+            onClick={() => sendRequest(_id, "ignored")}
+          >
+            Ignore
+          </button>
         </div>
       </div>
     </div>
