@@ -9,6 +9,8 @@ const Chat = () => {
   const { targetUserId } = useParams();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [targetUserName, setTargetUserName] = useState(null);
+
   const user = useSelector((store) => store.user);
   const userId = user?._id;
 
@@ -17,9 +19,11 @@ const Chat = () => {
       withCredentials: true,
     });
 
-    console.log(chat.data.messages);
+    const {messages, targetUser} = chat?.data;
 
-    const chatMessages = chat?.data?.messages.map((msg) => {
+    setTargetUserName(targetUser);
+
+    const chatMessages = messages.map((msg) => {
       const { senderId, text } = msg;
       return {
         firstName: senderId?.firstName,
@@ -69,7 +73,7 @@ const Chat = () => {
 
   return (
     <div className="w-3/4 mx-auto border border-gray-600 m-5 h-[70vh] flex flex-col">
-      <h1 className="p-5 border-b border-gray-600">Chat</h1>
+      <h1 className="p-5 border-b border-gray-600">{targetUserName?.firstName} {targetUserName?.lastName}</h1>
       <div className="flex-1 overflow-scroll p-5">
         {messages.map((msg, index) => {
           return (
